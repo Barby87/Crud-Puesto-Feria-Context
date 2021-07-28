@@ -1,9 +1,9 @@
 import './App.css';
-import Home from './containers/Home/Home';
+import MyFair from './containers/myFair/MyFair';
 
 function App() {
   return (
-    <Home/>
+    <MyFair/>
   );
 }
 

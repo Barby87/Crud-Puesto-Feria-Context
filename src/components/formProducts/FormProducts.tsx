@@ -1,34 +1,74 @@
-import { useState } from "react"
+import React, { useContext } from 'react';
+import useFormProducts from "../../hooks/useFormProducts";
+import ProductsContext from "../../contexts/ProductsContext";
 
+const FormProducts = () => {
+    const {formValues, handleChange, setFormValues} = useFormProducts({
+        productName: '',
+        productPrice: '',
+        productStock: ''
+    });
 
-interface Props {
-    handlerOnAdd: () => void;
-}
+    const { handleAdd } = useContext(ProductsContext)
 
-
-const FormProducts = ({handlerOnAdd}: Props) => {
-    const [productName, setProductName] = useState('')
-    const [productPrice, setProductPrice] = useState<any>(0) ;
-    const [stock, setStock] = useState<any>(0)
+    const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        if(formValues.productName !== '' && formValues.productPrice !== '' && formValues.productStock !== '') {
+            handleAdd({ 
+                id: new Date().getTime(), 
+                name: formValues.productName, 
+                price: formValues.productPrice, 
+                stock: formValues.productStock
+            });
+        } else {
+            return;
+        }
+            
+        // Limpiar campos del formulario luego de enviar datos 
+        setFormValues({
+            productName: '',
+            productPrice: '',
+            productStock: ''
+        })
+    }
 
     return (
-            <form>
+            <form onSubmit={(e:any) => handleSubmit(e)}>
                 <div className="mb-3">
-                    <label className="form-label">Nombre de producto</label>
-                    <input type="text" className="form-control" id="productName" aria-describedby="emailHelp" value={productName} onChange={e => setProductName(e.target.value)}/>
+                    <label className="form-label" htmlFor="productName">Nombre de producto</label>
+                    <input 
+                        type="text" 
+                        placeholder="Nombre de producto"
+                        className="form-control" 
+                        id="productName" 
+                        name="productName" 
+                        value={formValues.productName} 
+                        onChange={handleChange}
+                    />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Precio</label>
-                    <input type="text" className="form-control" id="productPrice" value={productPrice} onChange={e => setProductPrice(e.target.value)}/>
+                    <label className="form-label" htmlFor="productPrice">Precio unitario</label>
+                    <input 
+                        type="number" 
+                        placeholder="Precio"
+                        className="form-control" 
+                        id="productPrice" 
+                        name="productPrice" 
+                        value={formValues.productPrice} 
+                        onChange={handleChange}/>
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Cantidad</label>
-                    <input type="text" className="form-control" id="productPrice" value={stock} onChange={e => setStock(e.target.value)}/>
+                    <label className="form-label" htmlFor="productPrice">Cantidad</label>
+                    <input 
+                        type="number" 
+                        placeholder="Cantidad"
+                        className="form-control" 
+                        id="productPrice" 
+                        name="productStock" 
+                        value={formValues.productStock} 
+                        onChange={handleChange}/>
                 </div>
-                {/* <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                    <label className="form-check-label">Check me out</label>
-                </div> */}
+               
                 <button type="submit" className="btn btn-primary">Agregar producto</button>
             </form>
     )
