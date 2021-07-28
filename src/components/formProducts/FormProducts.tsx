@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import useFormProducts from "../../hooks/useFormProducts";
 import ProductsContext from "../../contexts/ProductsContext";
+import styles from "./FormProducts.module.css";
 
 const FormProducts = () => {
     const {formValues, handleChange, setFormValues} = useFormProducts({
@@ -33,9 +34,11 @@ const FormProducts = () => {
     }
 
     return (
+        <div>
+            <h3 className={styles.titleForm}>Agregue sus productos aquí</h3>
             <form onSubmit={(e:any) => handleSubmit(e)}>
                 <div className="mb-3">
-                    <label className="form-label" htmlFor="productName">Nombre de producto</label>
+                    <label className="form-label" htmlFor="productName">Nombre de producto:</label>
                     <input 
                         type="text" 
                         placeholder="Nombre de producto"
@@ -47,7 +50,7 @@ const FormProducts = () => {
                     />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label" htmlFor="productPrice">Precio unitario</label>
+                    <label className="form-label" htmlFor="productPrice">Precio unitario:</label>
                     <input 
                         type="number" 
                         placeholder="Precio"
@@ -58,7 +61,7 @@ const FormProducts = () => {
                         onChange={handleChange}/>
                 </div>
                 <div className="mb-3">
-                    <label className="form-label" htmlFor="productPrice">Cantidad</label>
+                    <label className="form-label" htmlFor="productPrice">Cantidad:</label>
                     <input 
                         type="number" 
                         placeholder="Cantidad"
@@ -68,9 +71,13 @@ const FormProducts = () => {
                         value={formValues.productStock} 
                         onChange={handleChange}/>
                 </div>
+
+                <div className="d-flex justify-content-end">
+                    <button type="submit" className="btn btn-warning">Agregar producto</button>
+                </div>
                
-                <button type="submit" className="btn btn-primary">Agregar producto</button>
             </form>
+        </div>
     )
 }
 
