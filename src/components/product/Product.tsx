@@ -3,6 +3,7 @@ interface ProductProps {
     name: string;
     price: number;
     stock: number;
+    // onClick: ()=>{}
 }
 
 const Product = ({ id, name, price, stock }: ProductProps) => {
@@ -12,6 +13,9 @@ const Product = ({ id, name, price, stock }: ProductProps) => {
             <td>{name}</td>
             <td>{price}</td>
             <td>{stock}</td>
+            {/* <td>
+                <button type="button" onClick={onClick} className="btn btn-danger">Danger</button>
+            </td> */}
         </tr>
     )
 }
