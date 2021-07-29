@@ -4,10 +4,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import About from './containers/about/About';
 import Home from './containers/home/Home';
 import NotFound from './containers/notFound.tsx/NotFound';
+import FairContextManager from './contexts/FairContextManager';
 
 function App() {
+
   return (
    <div className="App">
+     <FairContextManager>
       <Router>
         <Switch>
           <Route path="/" exact>
@@ -24,6 +27,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+     </FairContextManager>
    </div>
   );
 }

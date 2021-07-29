@@ -1,21 +1,15 @@
-import { useState } from "react";
+import { useContext } from "react";
 import FormProducts from "../../components/formProducts/FormProducts";
 import Product from "../../components/product/Product";
-import ProductsContext from "../../contexts/ProductsContext";
+import ProductsContext from "../../contexts/FairContext";
 import styles from './MyFair.module.css'
 
 const MyFair = () => {
-    const [products, setProducts] = useState<any[]>([]);
 
-    const handleAdd = (newProduct: any)=>{
-        setProducts([...products, newProduct])
-    }
-
+  const { products } = useContext(ProductsContext)
     return (
         <div className="container pt-5">
           <h1 className={styles.titleText}>Lista de productos 'Mi Feria'</h1>
-          <ProductsContext.Provider value={{handleAdd}}>
-            
             <div className="row d-flex align-content-center justify-content-center pt-5 pb-4">
               <div className="col-6">
                 <FormProducts/>
@@ -55,7 +49,6 @@ const MyFair = () => {
                 }           
               </div>
             </div>
-          </ProductsContext.Provider>
         </div>
     )
 }

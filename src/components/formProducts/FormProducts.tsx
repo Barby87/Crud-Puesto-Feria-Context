@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import useFormProducts from "../../hooks/useFormProducts";
-import ProductsContext from "../../contexts/ProductsContext";
+import FairContext from "../../contexts/FairContext";
 import styles from "./FormProducts.module.css";
 
 const FormProducts = () => {
@@ -10,7 +10,7 @@ const FormProducts = () => {
         productStock: ''
     });
 
-    const { handleAdd } = useContext(ProductsContext)
+    const { handleAdd } = useContext(FairContext)
 
     const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
