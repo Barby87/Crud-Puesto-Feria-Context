@@ -5,13 +5,16 @@ import About from './containers/about/About';
 import Home from './containers/home/Home';
 import NotFound from './containers/notFound.tsx/NotFound';
 import FairContextManager from './contexts/FairContextManager';
+import NavBar from './containers/navBar/NavBar';
+import Comments from './containers/comments/Comments';
 
 function App() {
 
   return (
-   <div className="App">
+   <div className="App container">
      <FairContextManager>
       <Router>
+        <NavBar/>
         <Switch>
           <Route path="/" exact>
             <Home/>
@@ -21,6 +24,9 @@ function App() {
           </Route>
           <Route path="/myFair" exact>
             <MyFair/>
+          </Route>
+          <Route path="/comments/:id" exact>
+            <Comments/>
           </Route>
           <Route path="*" exact>
             <NotFound/>
