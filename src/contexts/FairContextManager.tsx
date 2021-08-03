@@ -5,6 +5,7 @@ interface Props {
     children: JSX.Element
 }
 
+// Agrupa todos los elementos del context FairContext y lo exporta con el Provider incorporado, por lo que se usa como un elemento tsx
 const FairContextManager = ({children}: Props) => {
     const [products, setProducts] = useState<any>([]);
 
