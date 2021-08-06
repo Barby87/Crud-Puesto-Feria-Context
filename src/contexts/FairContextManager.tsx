@@ -13,13 +13,26 @@ const FairContextManager = ({children}: Props) => {
       setProducts([...products, newProduct])
     }
 
+    const handleDelete = (id: any) => {
+
+        const remainingProducts = products.filter((product:any) => parseInt(product.id) !== parseInt(id))
+        debugger
+        setProducts(remainingProducts);
+    }
+
+    const getProductById = (id: any):any => {
+        console.log('typeof id', typeof(id))
+        const product = products.find((element:any) => parseInt(element.id) === parseInt(id))
+        return product;
+    }
+
     return (
         <div>
-            <FairContext.Provider value={{handleAdd, products}}>
+            <FairContext.Provider value={{handleAdd, handleDelete, getProductById, products}}>
                 {children}
             </FairContext.Provider>
         </div>
     )
 }
 
-export default FairContextManager
+export default FairContextManager;

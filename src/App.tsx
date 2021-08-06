@@ -11,6 +11,8 @@ import LoginContextManager from './contexts/LoginContextManager';
 import Login from './containers/login/Login';
 import PrivateRoute from './components/privateRoute/PrivateRoute';
 import PrivateHome from './containers/privateHome/PrivateHome';
+import CreateProduct from './containers/createProduct/CreateProduct';
+import RemoveProduct from './components/removeProduct/RemoveProduct';
 
 function App() {
 
@@ -29,9 +31,15 @@ function App() {
             <Route path="/about" exact>
               <About/>
             </Route>
-            <Route path="/privateMyFair" exact>
-              <PrivateRoute path="/privateMyFair" exact component={MyFair}/>
+            <Route path="/list" exact>
+              <MyFair/>
             </Route>
+            <Route path="/create" exact>
+              <PrivateRoute path="/create" exact component={CreateProduct}/>
+            </Route>    
+            <Route path="/remove/:id" exact>
+              <PrivateRoute path="/remove/:id" exact component={RemoveProduct}/>
+            </Route>          
             <Route path="/comments/:id" exact>
               <Comments/>
             </Route>

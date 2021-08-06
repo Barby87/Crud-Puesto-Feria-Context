@@ -1,10 +1,9 @@
-import { Link, NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
+import LoginContext from '../../contexts/LoginContext';
 
-interface Props {
-    
-}
-
-const NavBar = (props: Props) => {
+const NavBar = () => {
+    const { logout } = useContext(LoginContext);
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container">
@@ -18,22 +17,22 @@ const NavBar = (props: Props) => {
                         <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link active" aria-current="page" to="/privateMyFair">Mi Feria</NavLink>
+                        <NavLink className="nav-link active" aria-current="page" to="/list">Listado de productos</NavLink>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/about">About</Link>
+                        <NavLink className="nav-link active" to="/create">Crear producto</NavLink>
                     </li>
-                    <li className="nav-item dropdown">
-                        <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                        </Link>
-                   
+                    <li>
+                        <form className="d-flex">
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                            <button className="btn btn-outline-success" type="submit">Search</button>
+                        </form>
                     </li>
                 </ul>
-                <form className="d-flex">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button className="btn btn-outline-success" type="submit">Search</button>
-                </form>
+               
+                <div className="mx-3">
+                    <button className="btn btn-danger ml-2" onClick={e=>logout()}>Cerrar sesión</button>
+                </div>
                 </div>
             </div>
         </nav>

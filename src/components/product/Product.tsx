@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface ProductProps {
     id: number;
     name: string;
@@ -13,9 +15,9 @@ const Product = ({ id, name, price, stock }: ProductProps) => {
             <td>{name}</td>
             <td>{price}</td>
             <td>{stock}</td>
-            {/* <td>
-                <button type="button" onClick={onClick} className="btn btn-danger">Danger</button>
-            </td> */}
+            <td>
+                <Link to={`remove/${id}`} className="btn btn-danger">Eliminar</Link>
+            </td>
         </tr>
     )
 }
