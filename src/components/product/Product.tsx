@@ -5,7 +5,6 @@ interface ProductProps {
     name: string;
     price: number;
     stock: number;
-    // onClick: ()=>{}
 }
 
 const Product = ({ id, name, price, stock }: ProductProps) => {
@@ -15,8 +14,11 @@ const Product = ({ id, name, price, stock }: ProductProps) => {
             <td>{name}</td>
             <td>{price}</td>
             <td>{stock}</td>
-            <td>
+            <td className="text-center">
                 <Link to={`remove/${id}`} className="btn btn-danger">Eliminar</Link>
+            </td>
+            <td className="text-center">
+                <Link to={`update/${id}`} className="btn btn-warning">Editar</Link>
             </td>
         </tr>
     )

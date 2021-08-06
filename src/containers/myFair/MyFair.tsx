@@ -28,6 +28,8 @@ const MyFair = () => {
                               <th scope="col">Precio</th>
                               <th scope="col">Stock</th>
                               <th scope="col">Eliminar producto</th>
+                              <th scope="col">Editar producto</th>
+
                           </tr>
                       </thead>
                       <tbody>
@@ -39,7 +41,6 @@ const MyFair = () => {
                                 name={product.name}
                                 price={product.price}
                                 stock={product.stock}
-                                // onClick={handleDelete}
                               />
                           ))
                         }
