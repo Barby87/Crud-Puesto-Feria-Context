@@ -1,6 +1,7 @@
 import { useContext } from "react";
 // import FormProducts from "../../components/formProducts/FormProducts";
 import Product from "../../components/product/Product";
+import ProductsList from "../../components/productsList/ProductsList";
 import ProductsContext from "../../contexts/FairContext";
 import styles from './MyFair.module.css'
 
@@ -12,7 +13,14 @@ const MyFair = () => {
           {products.length > 0 ? (
             <h1 className={styles.titleText}>Lista de productos 'Mi Feria'</h1>
             ) : (
-              <p className="text-center">Aún no tienes productos, para agregar debes iniciar sesión e la sección 'Crear producto'</p>
+              <div className={styles.textInfo}>
+              <div className="row d-flex justify-content-center pt-5 mt-5">
+                 <div className="col-6">
+                 <p className="text-center">La lista de productos está vacía, para agregar más productos debes dirigirte a la sección <b>'Crear producto'</b>.</p>
+                 </div>
+              </div>
+          </div>
+              
             )
           }
 
@@ -20,32 +28,7 @@ const MyFair = () => {
               <div className="col-8">
                 {
                   products.length > 0 ? (
-                    <table className="table">
-                      <thead>
-                          <tr className={styles.headerTable}>
-                              <th scope="col">Identificación de producto</th>
-                              <th scope="col">Nombre</th>
-                              <th scope="col">Precio</th>
-                              <th scope="col">Stock</th>
-                              <th scope="col">Eliminar producto</th>
-                              <th scope="col">Editar producto</th>
-
-                          </tr>
-                      </thead>
-                      <tbody>
-                        {
-                          products.map((product) => (
-                              <Product
-                                key={product.id}
-                                id={product.id}
-                                name={product.name}
-                                price={product.price}
-                                stock={product.stock}
-                              />
-                          ))
-                        }
-                      </tbody>
-                    </table>
+                    <ProductsList/>
                   ) : null
                 }           
               </div>

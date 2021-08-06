@@ -2,6 +2,10 @@
     font-size: 1.5rem;
 } 
 
+.textRed {
+    color: red;
+}
+
 .titleText {
     text-align: center;
     color: rgb(10, 119, 10);

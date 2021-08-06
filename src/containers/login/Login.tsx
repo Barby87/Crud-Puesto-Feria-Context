@@ -20,7 +20,7 @@ const Login = () => {
         <div className="row d-flex align-content-center justify-content-center pt-5 pb-4">
           <div className="mb-3 col-4">
             <label htmlFor="name" className="form-label">
-              Email address
+              Escribe cualquier cosa:
             </label>
             <input
               id="name"

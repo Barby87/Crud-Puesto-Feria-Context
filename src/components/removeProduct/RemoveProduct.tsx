@@ -22,13 +22,18 @@ const RemoveProduct = () => {
     }
 
     return (
-        
             name && <div>
-                        <p>¿Estás seguro que deseas borrar el siguiente producto?</p>
-                        <div>id: {id}</div>
-                        <div>nombre: {name}</div>
-                        <div>Precio: {price}</div>
-                        <button className="btn btn-danger" onClick={e => handleConfirm(e)}>Borrar producto</button>
+                        <h4 className="text-center mt-5">¿Estás seguro que deseas borrar el siguiente producto?</h4>
+                        <div className="row d-flex align-content-center justify-content-center pt-5 pb-4 mx-auto">
+                            <div className="col-3">
+                                <div><b>id:</b> {id}</div>
+                                <div><b>nombre:</b> {name}</div>
+                                <div><b>Precio:</b> {price}</div>
+                               <div className="d-grid gap-2 mx-auto mt-3">
+                                    <button className="btn btn-danger" onClick={e => handleConfirm(e)}>Borrar producto</button>
+                               </div>
+                            </div>
+                        </div>
                     </div>        
     )
 }

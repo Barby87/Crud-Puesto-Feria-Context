@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import useFormProducts from "../../hooks/useFormProducts";
 import FairContext from "../../contexts/FairContext";
-import styles from "./FormProducts.module.css";
+import styles from "./FormCreateProduct.module.css";
+import { useHistory } from 'react-router-dom';
 
-const FormProducts = () => {
-    const {formValues, handleChange, setFormValues} = useFormProducts({
+const FormCreateProduct = () => {
+    const history = useHistory()
+    const {formValues, handleChange} = useFormProducts({
         productName: '',
         productPrice: '',
         productStock: ''
@@ -24,13 +26,7 @@ const FormProducts = () => {
         } else {
             return;
         }
-            
-        // Limpiar campos del formulario luego de enviar datos 
-        setFormValues({
-            productName: '',
-            productPrice: '',
-            productStock: ''
-        })
+        history.push('/list');
     }
 
     return (
@@ -81,4 +77,4 @@ const FormProducts = () => {
     )
 }
 
-export default FormProducts
+export default FormCreateProduct;
