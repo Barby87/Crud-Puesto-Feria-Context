@@ -1,6 +1,6 @@
 import { useContext } from "react";
 // import FormProducts from "../../components/formProducts/FormProducts";
-import Product from "../../components/product/Product";
+// import Product from "../../components/product/Product";
 import ProductsList from "../../components/productsList/ProductsList";
 import ProductsContext from "../../contexts/FairContext";
 import styles from './MyFair.module.css'
